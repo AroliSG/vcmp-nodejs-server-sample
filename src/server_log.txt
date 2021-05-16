@@ -1,0 +1,207 @@
+2021-05-16 10:35:49: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:36:18: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:36:55: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: TypeError: p.getColourHex is not a function
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.executeVoid(IV8Executable.java:76)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerConnect(ServerEventHandler.java:242)
+2021-05-16 10:36:55: ServerEventHandler.exception()	[0;31m ERROR: main.js:32                 server.sendClientMessage(p, p.getColourHex (), `You're registered, please proceed to login.`); TypeError: p.getColourHex is not a function[0m
+2021-05-16 10:47:55: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:48:24: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:49:18: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:52:21: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:53:10: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 10:53:37: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:06:53: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:07:26: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:07:51: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:08:09: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:12:37: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:13:06: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:17:23: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:19:13: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:19:24: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:19:52: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:20:13: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:20:55: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:21:28: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:21:39: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: RGB is not defined
+	at com.caoccao.javet.interop.V8Native.invoke(Native Method)
+	at com.caoccao.javet.interop.NodeNative.invoke(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.invoke(V8Runtime.java:503)
+	at com.caoccao.javet.values.reference.V8ValueObject.invokeExtended(V8ValueObject.java:141)
+	at com.caoccao.javet.values.reference.IV8ValueObject.invoke(IV8ValueObject.java:199)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerCommand(ServerEventHandler.java:500)
+2021-05-16 11:21:39: ServerEventHandler.exception()	[0;31m ERROR: main.js:7             else server.sendClientMessage(p, RGB (0, 0, 255), `You're registered, please proceed to Log-In.`); ReferenceError: RGB is not defined[0m
+2021-05-16 11:24:56: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:25:11: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:25:26: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:25:50: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:26:11: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:27:34: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:41:43: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:44:17: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:44:51: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:47:26: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:49:05: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:53:01: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:55:43: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:56:10: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:56:39: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 11:56:39: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: SqliteError: no such table: account
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.executeVoid(IV8Executable.java:76)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerConnect(ServerEventHandler.java:242)
+2021-05-16 11:56:39: ServerEventHandler.exception()	[0;31m ERROR: main.js:5 	return this[cppdb].prepare(sql, this, false); SqliteError: no such table: account[0m
+2021-05-16 11:57:24: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:10:17: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:11:02: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:14:41: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:15:35: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:16:36: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:20:55: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:22:14: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:23:27: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:23:27: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: Invalid left-hand side in assignment
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.executeVoid(IV8Executable.java:76)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerConnect(ServerEventHandler.java:242)
+2021-05-16 12:23:27: ServerEventHandler.exception()	[0;31m ERROR: main.js:27             if (p.getUniqueId () =! row.uid && p.getIP () == row.ip) { ReferenceError: Invalid left-hand side in assignment[0m
+2021-05-16 12:23:41: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:24:13: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:25:25: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:25:34: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: db is not defined
+	at com.caoccao.javet.interop.V8Native.invoke(Native Method)
+	at com.caoccao.javet.interop.NodeNative.invoke(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.invoke(V8Runtime.java:503)
+	at com.caoccao.javet.values.reference.V8ValueObject.invokeExtended(V8ValueObject.java:141)
+	at com.caoccao.javet.values.reference.IV8ValueObject.invoke(IV8ValueObject.java:199)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerCommand(ServerEventHandler.java:500)
+2021-05-16 12:25:34: ServerEventHandler.exception()	[0;31m ERROR: main.js:19                         const row =  db.prepare('SELECT * FROM account WHERE nickname = ?').get(p.getName ()); ReferenceError: db is not defined[0m
+2021-05-16 12:25:54: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:26:32: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:27:41: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:35:01: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:35:08: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:37:10: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:37:57: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:38:12: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: SqliteError: datatype mismatch
+	at com.caoccao.javet.interop.V8Native.invoke(Native Method)
+	at com.caoccao.javet.interop.NodeNative.invoke(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.invoke(V8Runtime.java:503)
+	at com.caoccao.javet.values.reference.V8ValueObject.invokeExtended(V8ValueObject.java:141)
+	at com.caoccao.javet.values.reference.IV8ValueObject.invoke(IV8ValueObject.java:199)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerCommand(ServerEventHandler.java:500)
+2021-05-16 12:38:12: ServerEventHandler.exception()	[0;31m ERROR: main.js:68         q.run ('',p.getName (), data.password, 0, 0, 0, 0, 0, 0, 0, p.getUniqueId (), 0, p.getIP ()); SqliteError: datatype mismatch[0m
+2021-05-16 12:38:59: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:39:11: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: player is not defined
+	at com.caoccao.javet.interop.V8Native.invoke(Native Method)
+	at com.caoccao.javet.interop.NodeNative.invoke(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.invoke(V8Runtime.java:503)
+	at com.caoccao.javet.values.reference.V8ValueObject.invokeExtended(V8ValueObject.java:141)
+	at com.caoccao.javet.values.reference.IV8ValueObject.invoke(IV8ValueObject.java:199)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerCommand(ServerEventHandler.java:500)
+2021-05-16 12:39:11: ServerEventHandler.exception()	[0;31m ERROR: main.js:80         player.setMoney (10000); ReferenceError: player is not defined[0m
+2021-05-16 12:40:25: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:41:27: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:42:34: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:43:27: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:43:38: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:46:25: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:47:25: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:48:07: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:48:44: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:49:29: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:49:44: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:50:04: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:50:58: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 12:51:06: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: TypeError: p.getUniqueId2 is not a function
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.executeVoid(IV8Executable.java:76)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerConnect(ServerEventHandler.java:242)
+2021-05-16 12:51:06: ServerEventHandler.exception()	[0;31m ERROR: main.js:20         console.log( p.getUniqueId2 ()) TypeError: p.getUniqueId2 is not a function[0m
+2021-05-16 12:55:43: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:15:32: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:15:54: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:15:54: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: Cannot access 'account' before initialization
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.executeVoid(IV8Executable.java:76)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerConnect(ServerEventHandler.java:242)
+2021-05-16 13:15:54: ServerEventHandler.exception()	[0;31m ERROR: main.js:76     p.data.get = new account (p); ReferenceError: Cannot access 'account' before initialization[0m
+2021-05-16 13:16:24: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:18:01: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:18:11: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: Cannot access 'account' before initialization
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.executeVoid(IV8Executable.java:76)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerConnect(ServerEventHandler.java:242)
+2021-05-16 13:18:11: ServerEventHandler.exception()	[0;31m ERROR: main.js:76     p.data.get = new account (p); ReferenceError: Cannot access 'account' before initialization[0m
+2021-05-16 13:18:27: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:18:38: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:18:49: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:19:57: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:20:13: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:20:28: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:20:46: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:21:26: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:21:51: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: SqliteError: UNIQUE constraint failed: account.id
+	at com.caoccao.javet.interop.V8Native.invoke(Native Method)
+	at com.caoccao.javet.interop.NodeNative.invoke(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.invoke(V8Runtime.java:503)
+	at com.caoccao.javet.values.reference.V8ValueObject.invokeExtended(V8ValueObject.java:141)
+	at com.caoccao.javet.values.reference.IV8ValueObject.invoke(IV8ValueObject.java:199)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerCommand(ServerEventHandler.java:500)
+2021-05-16 13:21:51: ServerEventHandler.exception()	[0;31m ERROR: main.js:69         q.run (0,p.getName (), data.password, 0, 0, 0, 0, 10000, 0, 0, p.getUniqueId (), 0, p.getIP ()); SqliteError: UNIQUE constraint failed: account.id[0m
+2021-05-16 13:22:41: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:23:48: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:23:56: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:24:07: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:25:12: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:25:26: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: RangeError: Too few parameter values were provided
+	at com.caoccao.javet.interop.V8Native.invoke(Native Method)
+	at com.caoccao.javet.interop.NodeNative.invoke(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.invoke(V8Runtime.java:503)
+	at com.caoccao.javet.values.reference.V8ValueObject.invokeExtended(V8ValueObject.java:141)
+	at com.caoccao.javet.values.reference.IV8ValueObject.invoke(IV8ValueObject.java:199)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerCommand(ServerEventHandler.java:500)
+2021-05-16 13:25:26: ServerEventHandler.exception()	[0;31m ERROR: main.js:70         q.run (Id,p.getName (), data.password, 0, 0, 0, 0, 10000, 0, 0, p.getUniqueId (), 0, p.getIP ()); RangeError: Too few parameter values were provided[0m
+2021-05-16 13:26:01: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:39:41: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:39:50: ServerEventHandler.exception()	com.caoccao.javet.exceptions.JavetExecutionException: ReferenceError: pdata is not defined
+	at com.caoccao.javet.interop.V8Native.execute(Native Method)
+	at com.caoccao.javet.interop.NodeNative.execute(NodeNative.java:24)
+	at com.caoccao.javet.interop.V8Runtime.execute(V8Runtime.java:327)
+	at com.caoccao.javet.interop.executors.V8StringExecutor.execute(V8StringExecutor.java:55)
+	at com.caoccao.javet.interop.IV8Executable.execute(IV8Executable.java:29)
+	at com.caoccao.javet.interop.IV8Executable.executePrimitive(IV8Executable.java:61)
+	at com.caoccao.javet.interop.IV8Executable.executeBoolean(IV8Executable.java:35)
+	at com.github.newk5.vcmp.nodejs.plugin.ServerEventHandler.onPlayerRequestSpawn(ServerEventHandler.java:996)
+2021-05-16 13:39:50: ServerEventHandler.exception()	[0;31m ERROR: main.js:247     if (!pdata.get.Reg) return server.sendClientMessage(p, VCMP.Colors.toHex({r:255,g:0,b:0}), `You need to SignUp. Please use /signup password`); ReferenceError: pdata is not defined[0m
+2021-05-16 13:40:20: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:41:13: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:52:15: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:53:11: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 13:56:25: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:00:54: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:01:28: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:02:10: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:04:11: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:08:06: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:09:00: ServerEventHandler.onServerInitialise()	Node.js context initilized
+2021-05-16 14:09:50: ServerEventHandler.onServerInitialise()	Node.js context initilized
