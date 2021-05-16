@@ -1,4 +1,3 @@
-//https://www.npmjs.com/package/youtube-search-engine
 // files
 const account  = require ( "./src/components/account" );
 const commands = require ( "./src/components/commands" );
@@ -12,43 +11,6 @@ const client = new Discord.Client();
 client.on('message', async msg => {
     server.sendClientMessageToAll ( "Aroly[#ffffff]: " + msg.content)
 });
-
-
-/*
-
-var exec = require('child_process').exec, child;    
-child = exec('java -jar C:\\Users\\Aroly\\Downloads\\nodeServer\\NodeJSPluginSetup.jar arg1 arg2',
-      function (error, stdout, stderr){
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-        if(error !== null){
-          console.log('exec error: ' + error);
-        }
-    });
-
-//server.print ()
-
-const gse = require("general-search-engine")
-
-async  function  main(){
-	let petition = await new gse.search()
-		.setType("search")
-
-	  .setQuery("como estas to english").run()
-
-console.log(petition)
-}
-
-main()*/
-
-/*
-const translatte = require('translatte');
-
-translatte('Do you speak Russian?', {to: 'es'}).then(res => {
-    console.log(res );
-}).catch(err => {
-    console.error(err);})
-*/
 
 function onServerLoadScripts() {
    Vehicles: server.createVehicle (200, 1, 1009, 1003, 14.5, 1, 1, 1);
@@ -330,4 +292,4 @@ GetCountry = (ip) => {
     }
 }
 
-client.login( 'NzgyNzc0NzY5ODQ5NzI5MDk2.X8RF0A.SE2Vks5cXYEECNxqB7AmFdeN9J8' );
+client.login( 'token' );
