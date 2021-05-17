@@ -13,7 +13,7 @@ client.on('message', async msg => {
 });
 
 function onServerLoadScripts() {
-   Vehicles: server.createVehicle (200, 1, 1009, 1003, 14.5, 1, 1, 1);
+   Vehicles: server.createVehicle (200, 1, -671.8555297851562, 807.1378784179688, 11.262946128845215, 1, 1, 1);
 }
 
 function onServerInitialise() {
