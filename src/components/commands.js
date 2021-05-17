@@ -1,5 +1,5 @@
 const hashing = require('password-hash');
-const db = require('better-sqlite3')('database.db');
+
 var commands = (p, command, args) => {
     switch (command) {
         case "signup": {
@@ -17,8 +17,7 @@ var commands = (p, command, args) => {
             if (p.data.get.Reg) {
                 if (!p.data.get.Log) {
                     if (args [0] !== undefined) {
-                        const row =  db.prepare('SELECT * FROM account WHERE nickname = ?').get(p.getName ());
-                        p.data.get.makeLogin (p, hashing.verify(args [0], row.password));
+                        p.data.get.makeLogin (p, hashing, args [0]);
                     }
                     else server.sendClientMessage(p, VCMP.Colors.toHex({r:255,g:0,b:0}), `please, provide a password to LogIn.`);
                 }
