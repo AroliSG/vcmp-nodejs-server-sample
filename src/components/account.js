@@ -88,7 +88,7 @@ class account {
 
 
    // table creation
-   // db.exec ("CREATE TABLE account (id integer, nickname text, password txt, headshots integer, kills integer, deaths integer, topspree integer, money integer, bank integer, level integer, uid bigint, uid2 text, ip text)");
+   db.exec ("CREATE TABLE account (id integer, nickname text, password txt, headshots integer, kills integer, deaths integer, topspree integer, money integer, bank integer, level integer, uid bigint, uid2 text, ip text)");
 
 
 module.exports = account;
