@@ -44,7 +44,7 @@ class account {
     makeLogin = function (p, hashing, password) {
         const q = db.prepare('SELECT * FROM account WHERE nickname = ?').get(p.getName ());
         if (q) {
-           if (hashing.verify(password, row.password)) {
+           if (hashing.verify(password, q.password)) {
                 this.Log = true;
                 
                 this.HeadShots       = q.headshots;
