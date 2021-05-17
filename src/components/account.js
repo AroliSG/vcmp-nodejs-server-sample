@@ -3,7 +3,6 @@ class account {
     HeadShots       = 0;
     Kills           = 0;
     Deaths          = 0;
-    KillingSpree    = 0;
     TopSpree        = 0;
     Bank            = 0;
     Level           = 0;
@@ -25,6 +24,15 @@ class account {
                 server.sendClientMessage(p, p.getColour(), `welcome back to serverName!.`);
                 this.Reg = true;
                 this.Log = true;
+                
+                this.HeadShots       = q.headshots;
+                this.Kills           = q.kills;
+                this.Deaths          = q.deaths;
+                this.TopSpree        = q.topspree;
+                this.Bank            = q.bank;
+                this.Level           = q.level;  
+                
+                p.setMoney (q.money);  
             }
             else {
                 server.sendClientMessage(p, p.getColour(), `You're registered, please proceed to Log-In.`);
@@ -83,6 +91,11 @@ class account {
         p.setMoney (10000);
 
         server.sendClientMessage(p, p.getColour(), `Your account was created, Enjoy this wonderful js server`);
+    }
+
+    makeSave = function (p) {
+        let q = db.prepare('UPDATE account SET headshots = ?, kills = ?, deaths = ?, topspree = ?, money = ?, bank = ?, level = ?, uid = ?, uid2 = ?, ip = ? WHERE nickname = ?'); 
+        q.run (this.HeadShots, this.Kills, this.Deaths, this.TopSpree, p.getMoney (), this.Bank, this.Level, p.getUniqueId (), p.getUID2 (), p.getIP (), p.getName ());
     }
 }
 
