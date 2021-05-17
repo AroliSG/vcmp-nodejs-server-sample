@@ -68,7 +68,7 @@ class account {
         const Id = db.prepare('SELECT * FROM account').all().length; // auto increment
         
         let q = db.prepare('INSERT INTO account (id, nickname, password, headshots, kills, deaths, topspree, money, bank, level, uid, uid2, ip) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        q.run (Id,p.getName (), data.password, 0, 0, 0, 0, 10000, 0, 0, p.getUniqueId (), 0, p.getIP ());
+        q.run (Id,p.getName (), data.password, 0, 0, 0, 0, 10000, 0, 0, p.getUniqueId (), p.getUID2 (), p.getIP ());
 
         this.Reg = true;
         this.Log = true;
