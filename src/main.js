@@ -1,6 +1,6 @@
 // files
-const account  = require ( "./src/components/account" );
-const commands = require ( "./src/components/commands" );
+const account  = require ( "./components/account" );
+const commands = require ( "./components/commands" );
 
 // npm's
 var geoip = require('geoip-lite');
