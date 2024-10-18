@@ -1,107 +1,146 @@
-const db = require('better-sqlite3')('database.db');
-class account {
-    HeadShots       = 0;
-    Kills           = 0;
-    Deaths          = 0;
-    TopSpree        = 0;
-    Bank            = 0;
-    Level           = 0;
+const loki = require('lokijs');
 
-    Reg             = false;
-    Log             = false;
+// Initialize LokiJS database and create an "accounts" collection
+const db = new loki('accounts.db', {
+    autosave: true,
+    autosaveInterval: 4000, // Save every 4 seconds
+    autoload: true,
+    autoloadCallback: databaseInitialize
+});
 
-    attempts        = 0;
-    Owner           = "LBR.AroliS^";
+let accounts;
 
-    constructor (p) {
-       
-        const q =  db.prepare('SELECT * FROM account WHERE nickname = ?').get(p.getName ());
-        if (q == undefined) {
-            server.sendClientMessage(p, p.getColour(), `You need to proceed to Sign-Up.`);
-        }
-        else {
-            if (p.getUniqueId () == q.uid && p.getIP () == q.ip) {
-                server.sendClientMessage(p, p.getColour(), `welcome back to serverName!.`);
-                this.Reg = true;
-                this.Log = true;
-                
-                this.HeadShots       = q.headshots;
-                this.Kills           = q.kills;
-                this.Deaths          = q.deaths;
-                this.TopSpree        = q.topspree;
-                this.Bank            = q.bank;
-                this.Level           = q.level;  
-                
-                p.setMoney (q.money);  
-            }
-            else {
-                server.sendClientMessage(p, p.getColour(), `You're registered, please proceed to Log-In.`);
-                this.Reg = true;
-            }
-        }
-    }
-
-    makeLogin = function (p, hashing, password) {
-        const q = db.prepare('SELECT * FROM account WHERE nickname = ?').get(p.getName ());
-        if (q) {
-           if (hashing.verify(password, q.password)) {
-                this.Log = true;
-                
-                this.HeadShots       = q.headshots;
-                this.Kills           = q.kills;
-                this.Deaths          = q.deaths;
-                this.KillingSpree    = q.killingspree;
-                this.TopSpree        = q.topspree;
-                this.Bank            = q.bank;
-                this.Level           = q.level;    
-
-                p.setMoney (q.money);            
-                server.sendClientMessage(p, VCMP.Colors.toHex({r:0,g:153,b:0}), `You have been logged-in into your account sucessfully.`);
-           }
-           else {
-                server.sendClientMessage(p, VCMP.Colors.toHex({r:255,g:0,b:0}), `password given was not correct. ${this.attempts+1}/3`);
-                this.attempts++;
-                if (this.attempts == 3) {
-                    p.kick ();
-                    server.sendClientMessageToAll (`${p.getName ()} was kicked by nodejs bot, reason: e.e`);
-                }
-           }
-        }
-        else {
-            server.sendClientMessage(p, p.getColour(), `looks like your account is bugged. Contact a developer.`);
-        }
-    }
-
-    makeSignup = function (p, data) {
-        const Id = db.prepare('SELECT * FROM account').all().length; // auto increment
-        
-        let q = db.prepare('INSERT INTO account (id, nickname, password, headshots, kills, deaths, topspree, money, bank, level, uid, uid2, ip) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        q.run (Id,p.getName (), data.password, 0, 0, 0, 0, 10000, 0, 0, p.getUniqueId (), p.getUID2 (), p.getIP ());
-
-        this.Reg = true;
-        this.Log = true;
-        
-        this.HeadShots       = 0;
-        this.Kills           = 0;
-        this.Deaths          = 0;
-        this.KillingSpree    = 0;
-        this.TopSpree        = 0;
-        this.Bank            = 0;
-        this.Level           = 0;     
-        p.setMoney (10000);
-
-        server.sendClientMessage(p, p.getColour(), `Your account was created, Enjoy this wonderful js server`);
-    }
-
-    makeSave = function (p) {
-        let q = db.prepare('UPDATE account SET headshots = ?, kills = ?, deaths = ?, topspree = ?, money = ?, bank = ?, level = ?, uid = ?, uid2 = ?, ip = ? WHERE nickname = ?'); 
-        q.run (this.HeadShots, this.Kills, this.Deaths, this.TopSpree, p.getMoney (), this.Bank, this.Level, p.getUniqueId (), p.getUID2 (), p.getIP (), p.getName ());
+function databaseInitialize() {
+    accounts = db.getCollection('accounts');
+    if (!accounts) {
+        accounts = db.addCollection('accounts', { unique: ['nickname'] });
     }
 }
 
 
-   // table creation
-   db.exec ("CREATE TABLE IF NOT EXISTS account (id integer, nickname text, password txt, headshots integer, kills integer, deaths integer, topspree integer, money integer, bank integer, level integer, uid bigint, uid2 text, ip text)");
+class Account {
+    constructor(p) {
+        this.nickname = p.getName();
+        this.HeadShots = 0;
+        this.Kills = 0;
+        this.Deaths = 0;
+        this.TopSpree = 0;
+        this.Bank = 0;
+        this.Level = 0;
+        this.Reg = false;
+        this.Log = false;
+        this.attempts = 0;
 
+        const account = accounts.findOne({ nickname: this.nickname });
+        if (!account) {
+            server.sendClientMessage(p, 'You need to proceed to Sign-Up.');
+        } else {
+            if (p.getUID() === account.uid && p.getIP() === account.ip) {
+                server.sendClientMessage(p, 'Welcome back to serverName!.');
+                this.Reg = true;
+                this.Log = true;
+                this.declarePlayerData(account);
+                p.setMoney(account.money);
+            } else {
+                server.sendClientMessage(p, 'You are registered, please proceed to Log-In.');
+                this.Reg = true;
+            }
+        }
+    }
 
-module.exports = account;
+    save() {
+        db.saveDatabase((err) => {
+            if (err) {
+                console.error('Failed to save database:', err);
+            } else {
+                console.log('Database saved successfully.');
+            }
+        });
+    }
+
+    declarePlayerData(account) {
+        this.HeadShots  = account.headshots;
+        this.Kills      = account.kills;
+        this.Deaths     = account.deaths;
+        this.TopSpree   = account.topspree;
+        this.Bank       = account.bank;
+        this.Level      = account.level;
+    }
+
+    makeLogin(p, hashing, password) {
+        const account = accounts.findOne({ nickname: this.nickname });
+        if (account) {
+            if (hashing.verify(password, account.password)) {
+                this.Log = true;
+                this.declarePlayerData(account);
+                p.setMoney(account.money);
+                server.sendClientMessage(p, 'You have been logged in successfully.');
+            } else {
+                this.attempts++;
+                server.sendClientMessage(p, `Password incorrect. Attempt ${this.attempts}/3.`);
+                if (this.attempts >= 3) {
+                    p.kick();
+                    server.sendClientMessageToAll(`${p.getName()} was kicked for too many failed login attempts.`);
+                }
+            }
+        } else {
+            server.sendClientMessage(p, 'Account not registered.');
+        }
+    }
+
+    makeSignup(p, data) {
+        const accountExists = accounts.findOne({ nickname: this.nickname });
+        if (accountExists) {
+            server.sendClientMessage(p, 'Account already exists.');
+            return;
+        }
+
+        // Create a new account and insert it into the database
+        const query = {
+            nickname: this.nickname,
+            password: data.password,
+            headshots: 0,
+            kills: 0,
+            deaths: 0,
+            topspree: 0,
+            money: 10000,
+            bank: 0,
+            level: 0,
+            uid: p.getUID(),
+            uid2: p.getUID2(),
+            ip: p.getIP()
+        };
+
+        accounts.insert(query);
+        this.declarePlayerData(query);
+        this.save();
+
+        this.Reg = true;
+        this.Log = true;
+
+        p.setMoney(10000);
+        server.sendClientMessage(p, 'Your account has been created successfully.');
+    }
+
+    makeSave(p) {
+        const account = accounts.findOne({ nickname: this.nickname });
+        if (account) {
+            account.headshots = this.HeadShots;
+            account.kills = this.Kills;
+            account.deaths = this.Deaths;
+            account.topspree = this.TopSpree;
+            account.money = p.getMoney();
+            account.bank = this.Bank;
+            account.level = this.Level;
+            account.uid = p.getUniqueId();
+            account.uid2 = p.getUID2();
+            account.ip = p.getIP();
+
+            accounts.update(account);
+            this.save();
+            console.log('Account data saved successfully.');
+        }
+    }
+}
+
+module.exports = Account;

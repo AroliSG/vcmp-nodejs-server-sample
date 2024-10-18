@@ -1,262 +1,323 @@
-// files
+
+
+
+
+
+require("./components/commands");
+require("./components/dcommander");
+
+const {
+    staffId,
+    messageToChannel
+} = require("./components/discord");
+
 const account  = require ( "./components/account" );
-const commands = require ( "./components/commands" );
+/*
 
-// npm's
-var geoip = require('geoip-lite');
-const Discord = require('discord.js');
-const client = new Discord.Client();
+    Server Events
 
+*/
 
-client.on('message', async msg => {
-    server.sendClientMessageToAll ( "Aroly[#ffffff]: " + msg.content)
+server.events.on("LoadScripts", function() {
+    server.setOption([
+        'AutoJoinMessages',
+        'AutoDeathMessages',
+    ], false);
+
+        // disabling crouch
+    server.setOption('DisableCrouch', true);
+    server.createVehicle (200, 1, -293.0143127441406,-597.059326171875,12.852800369262695, 1, 1, 1);
+
+    setTimeout(() => {
+            // need to wait for discord client to initialize before sending messages
+        messageToChannel(`${server.getServerName()} scripts loaded! :arrows_clockwise:`, staffId);
+    }, 2000);
 });
 
-function onServerLoadScripts() {
-   Vehicles: server.createVehicle (200, 1, -671.8555297851562, 807.1378784179688, 11.262946128845215, 1, 1, 1);
-}
+server.events.on("UnloadScripts", function() {
+});
 
-function onServerInitialise() {
-}
+server.events.on("Init", function() {
+});
 
-function onServerUnloadScripts() {
+server.events.on("Shutdown", function() {
+});
 
-}
+/*
 
-function onServerShutdown() {
+            Server Events
 
-}
+*/
 
-function onPlayerConnect(p) {
-    server.sendClientMessageToAll (`${p.getName ()} [#ffffff]has joined the server from ${GetCountry (p.getIP ()).country} (${GetCountry (p.getIP ()).city})`);
-    p.data.get = new account (p);
-}
+/*
+
+            Player Events
+
+*/
 
 
-function onPlayerDisconnect(p, reason) {
+// Function to fetch URL content
+
+
+server.events.on("Incoming", function(name, password, ip) {
+});
+
+server.events.on("Connected", function(p) {
+    p.data.get = new account(p);
+
+    server.sendClientMessageToAll (`${p.getName()} [#ffffff]has joined the server.`);
+    messageToChannel (`${p.getName()} has joined the server :earth_americas:`, staffId);
+});
+
+server.events.on("Disconnected", function(p, reason) {
+    p.data.get.save();
     server.sendClientMessageToAll (`${p.getName ()} [#ffffff]has left the server.`);
-}
+    messageToChannel (`${p.getName ()} has left the server :baby_bottle:`, staffId);
+});
 
-function onPlayerCommand(p, message) {
-    let args = message
-        .slice(0)
-        .trim()
-        .split(/ +/g)
-    , command = args.shift().toLowerCase();
-    commands (p, command, args);
-}
+    // ----------------------------------------------------------------
 
-function onPlayerSpawn(p) {
-}
+server.events.on("Kill", function(p, killer, reason, bp) {
+    killer.data.get.Kills++;
+    p.data.get.Deaths++;
 
-function onPlayerRequestSpawn(p) {
+    server.sendClientMessageToAll(`${p.getName()} was killed by ${killer.getName()}.`);
+    messageToChannel (`${p.getName ()} got killed by ${killer.getName ()} :crossed_swords:`, staffId);
+});
+
+server.events.on("Death", function(p, reason) {
+    p.data.get.Deaths++;
+
+    server.sendClientMessageToAll(`${p.getName()} die.`);
+    messageToChannel (`${p.getName ()} die :skull_crossbones:`, staffId);
+});
+
+    // ----------------------------------------------------------------
+
+server.events.on("PrivateMessage", function(p, recipient, message) {
+});
+
+server.events.on("Message", function(p, message) {
+    messageToChannel (`${p.getName ()}: ${message}`, staffId);
+    return server.sendClientMessageToAll(`${p.getName ()}: ${message}`);
+});
+
+    // this event wont be triggered at least that forceCommandEvent is enabled
+    // if you only want to run this event, do not create commands within the command handler, (forceCommandEvent) has to be enabled
+server.events.on("Command", function(p, command, msg) {
+});
+
+    // ----------------------------------------------------------------
+
+server.events.on("Spawn", function(p) {
+});
+
+server.events.on("RequestSpawn", function(p) {
     if (!p.data.get.Reg) {
-        server.sendClientMessage(p, VCMP.Colors.toHex({r:255,g:0,b:0}), `You need to SignUp. Please use /signup password`);
+        server.sendClientMessage(p,`You need to SignUp. Please use /signup password`);
         return false;
     }
     else if (!p.data.get.Log) {
-        server.sendClientMessage(p, VCMP.Colors.toHex({r:255,g:0,b:0}), `You need to Log-In. Please use /login password`);
+        server.sendClientMessage(p, `You need to Log-In. Please use /login password`);
         return false;
     }
     else {
         // spawning
         return true;
     }
-}
+});
 
-function onPlayerDeath(player, killer, reason, bodyPart) {
+server.events.on("RequestClass", function(p, classIndex) {
+    return 1;
+});
 
-}
+    // ----------------------------------------------------------------
 
+server.events.on("EnterVehicle", function(p, vehicle, slot) {
+});
 
-function onPlayerEnterVehicle(player, vehicle, slot) {
+server.events.on("RequestEnterVehicle", function(p, vehicle, slot) {
+});
 
-}
+server.events.on("ExitVehicle", function(p, vehicle) {
+});
 
+    // ----------------------------------------------------------------
 
-function onPlayerExitVehicle(player, vehicle) {
+server.events.on("KeyUp", function(p, key) {
+});
 
-}
+server.events.on("KeyDown", function(p, key) {
+});
 
+server.events.on("KeyChanges", function(p, newKey, oldKey) {
+});
 
-function onVehicleExplode(vehicle) {
+    // ----------------------------------------------------------------
 
-}
+server.events.on("EndTyping", function(p) {
+});
 
-function onPlayerCrashReport(player, crashLog) {
+server.events.on("BeginTyping", function(p) {
+});
 
-}
+    // ----------------------------------------------------------------
 
+server.events.on("Spectate", function(p, target) {
+});
 
-function onCheckPointExited(checkPoint, player) {
+server.events.on("AFKChanges", function(p, afk) {
+});
 
-}
+    // ----------------------------------------------------------------
 
+server.events.on("isCrouching", function(p, isCrouching) {
+});
 
-function onCheckPointEntered(checkPoint, player) {
+server.events.on("isOnFire", function(p, isOnFire) {
+});
 
-}
+server.events.on("isOnAction", function(p, oldAction, newAction) {
+});
 
+server.events.on("StateChanges", function(p, oldState, newState) {
+});
 
-function onPickupRespawn(pickup) {
+server.events.on("NameChanges", function(p, oldName, newName) {
+});
 
-}
+    // ----------------------------------------------------------------
 
+server.events.on("ModuleList", function(p, moduleList) {
+});
 
-function onPickupPicked(pickup, player) {
+server.events.on("CrashReport", function(p, logs) {
+});
 
-}
+/*
 
+            Player Events
 
-function onPickupPickAttempt(pickup, player) {
-    return true;
-}
+*/
 
 
-function onObjectTouched(object, player) {
+/*
 
-}
+            CheckPoints Events
 
+*/
+server.events.on("CheckPointExited", function(c, p) {
+});
 
-function onObjectShot(object, player, weaponId) {
+server.events.on("CheckPointEntered", function(c, p) {
+});
 
-}
+/*
 
+            CheckPoints Events
 
-function onVehicleRespawn(vehicle) {
+*/
 
-}
 
+/*
 
-function onVehicleUpdate(vehicle, updateType) {
+            Pickups Events
 
-}
+*/
 
+server.events.on("PickupRespawn", function(pickup) {
+});
+server.events.on("PickupCollected", function(pickup, p) {
+});
+server.events.on("PickupAttempted", function(pickup, p) {
+});
 
-function onPlayerSpectate(player, spectated) {
+/*
 
-}
+            Pickup Events
 
+*/
 
-function onPlayerKeyBindUp(player, keyBindIndex) {
 
-}
+/*
 
+            Object Events
 
-function onPlayerKeyBindDown(player, keyBindIndex) {
+*/
 
-}
+server.events.on("ObjTouched", function(obj, p) {
+});
+server.events.on("ObjShot", function(obj, p, weaponId) {
+});
 
+/*
 
-function onPlayerPrivateMessage(player, recipient, message) {
+            Object Events
 
-    return true;
-}
+*/
 
 
-function onPlayerMessage(player, message) {
+/*
 
-}
+            Vehicle Events
 
+*/
 
-function onPlayerAwayChange(player, isAway) {
+server.events.on("VehicleExplode", function(vehicle) {
+});
+server.events.on("VehicleRespawn", function(vehicle) {
+});
 
-}
 
+/*
 
-function onPlayerEndTyping(player) {
+            Vehicle Events
 
+*/
 
-}
 
+/*
 
-function onPlayerBeginTyping(player) {
+            Script Data Events
 
+*/
 
-}
+server.events.on("ScriptData", function(p, bytes) {
+});
 
 
-function onPlayerGameKeysChange(player, oldKeys, newKeys) {
-
-}
-
-
-function onPlayerCrouchChange(player, isCrouching) {
-
-}
-
-
-function onPlayerOnFireChange(player, isOnFire) {
-
-}
-
-
-function onPlayerActionChange(player, oldAction, newAction) {
-
-}
-
-
-function onPlayerStateChange(player, oldState, newState) {
-
-}
-
-
-function onPlayerNameChange(player, oldName, newName) {
-
-}
-
-
-function onPlayerRequestEnterVehicle(player, vehicle, slot) {
-
-    return true;
-
-}
-
-
-
-
-
-function onPlayerRequestClass(player, classIndex) {
-
-}
-
-function onPlayerModuleList(player, list) {
-
-}
-
-
-
-function onClientScriptData(player, stream) {
- return 1;
-
-    /*
-        console.log(buff.readString());
-        console.log(buff.readFloat());
-        console.log(buff.readInt());
-        console.log(buff.readByte());
+/*
+function onPlayerUpdate(p, updateType) {
+    console.time('onPlayerUpdate');
     
-        const stream = new VCMPStream();
-        stream.writeString("lalaya");
-        stream.writeFloat(5.9);
-        stream.writeInt(51);
-        stream.writeByte(3);
-        stream.send(player);
-        */
 
+    console.log(p.getName(), updateType)
+    // Original logic goes here.
+    
+    console.timeEnd('onPlayerUpdate');
 }
 
 
+let intervalUpdate = function(p, updateType) {
+    console.time('setIntervalUpdate');
+    console.log(p.getName(), updateType)
+    // Simulate the same logic as onPlayerUpdate.
+    
+    console.timeEnd('setIntervalUpdate');
+};
 
-
-function onIncomingConnection(name, password, ip) {
-
-    return name;
-}
+let intervalId = setInterval(() => {
+    const player = server.getPlayer(0);
+    if (player)
+    intervalUpdate(player, player.getState());
+}, 1000);  // Adjust the interval to match the intended update rate
+*/
 
 
 
 
 /*
+    not included within the handler
     the following 5 events are very CPU and memory intensive, if you're not using them,
     comment them out or just remove them and the server will not process them,
     saving you alot of resources CPU/memory-wise and overall improving server performance
@@ -282,14 +343,16 @@ function onPlayerArmourChange(player, lastArmour, newArmour) {
 function onPlayerWeaponChange(player, oldWep, newWep) {
 
 }
-*/
 
-GetCountry = (ip) => {
+function onVehicleUpdate(v, u) {return handler.registerEvent("VehicleUpdate", v, u);}
+
+*/
+/*
+const GetCountry = (ip) => {
     if (ip == "127.0.0.1" || ip == "localhost") return { country: "Neverland", city: "Rio Janeiro"};
     else {
         let country = geoip.lookup(ip);
         return country;
     }
-}
-
-client.login( 'token' );
+}*/
+//client.login( 'token' );

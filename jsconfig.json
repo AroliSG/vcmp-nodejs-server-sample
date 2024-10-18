@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "checkJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@types/server": ["./@types/server.d.ts"],
+      "@types/vcmp": ["./@types/vcmp.d.ts"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
