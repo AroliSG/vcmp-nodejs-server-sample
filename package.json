@@ -1,0 +1,1 @@
+{"dependencies":{"@discordjs/core":"^2.0.0","@discordjs/opus":"^0.9.0","bufferutil":"^4.0.8","lokijs":"^1.5.12","password-hash":"^1.2.2"}}
