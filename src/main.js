@@ -289,20 +289,16 @@ server.events.on("ScriptData", function(p, bytes) {
 /*
 function onPlayerUpdate(p, updateType) {
     console.time('onPlayerUpdate');
-    
-
     console.log(p.getName(), updateType)
     // Original logic goes here.
-    
     console.timeEnd('onPlayerUpdate');
 }
 
-
+  // cause crashes
 let intervalUpdate = function(p, updateType) {
     console.time('setIntervalUpdate');
     console.log(p.getName(), updateType)
     // Simulate the same logic as onPlayerUpdate.
-    
     console.timeEnd('setIntervalUpdate');
 };
 
@@ -320,7 +316,7 @@ let intervalId = setInterval(() => {
     not included within the handler
     the following 5 events are very CPU and memory intensive, if you're not using them,
     comment them out or just remove them and the server will not process them,
-    saving you alot of resources CPU/memory-wise and overall improving server performance
+    saving you a  lot of resources CPU/memory-wise and overall improving server performance
 */
 /*
 function onPlayerUpdate(player, updateType) {
