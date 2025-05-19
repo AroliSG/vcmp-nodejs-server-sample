@@ -544,7 +544,9 @@ interface Server {
   banAddress: (ip: string) => void;
   unbanAddress: (ip: string) => void;
   isAddressBanned: (ip: string) => boolean;
-  getPlayer: (name: number|string) => ServerPlayerTypes;
+  getPlayer: (name: number) => ServerPlayerTypes;
+  findPlayer: (name: string) => ServerPlayerTypes;
+  lookupPlayer: (name: string|number) => ServerPlayerTypes;
   getAllPlayers: () => ServerPlayerTypes[];
   createVehicle: (modelId: number, worldId:number, x:number, y:number, z:number, angle:number, mainColour:number, secondaryColour:number) => serverVehicleTypes;
   getVehicle: (modelId: number) => serverVehicleTypes;
